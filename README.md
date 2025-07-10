@@ -1,8 +1,8 @@
 # Documentacion Cognicare
 
 ## Descubrimiento del problema
-- Visión
-- Mapade impacto
+- [Visión](https://github.com/federico1605/Documentacion_Cognicare/blob/e60c2a59e8f9cfa6a6924d60fc9de7e2513ce6c3/DescubrimientoProblema/1.1.%20Visi%C3%B3n.md)
+- [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/e60c2a59e8f9cfa6a6924d60fc9de7e2513ce6c3/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
 ## Diseño estrategico
 - Modelado de dominio (Modelo anemico y enriquecido)
 - Requerimientos
