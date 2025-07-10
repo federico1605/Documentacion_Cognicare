@@ -1,6 +1,8 @@
+# Modelo de Dominio
+
 ![Dominio_Anemico](/Imagenes/DominioBigPicture.png)
 
-### Objetos de Dominio
+## Objetos de Dominio
 
 - **Estudiante**: Objeto de dominio correspondiente a los estudiantes registrados en cognicare.
 - **Entrenador**: Objeto de dominio correspondiente a los entrenadores de la aplicación Cognicare.
