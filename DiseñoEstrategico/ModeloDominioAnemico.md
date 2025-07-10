@@ -1,4 +1,4 @@
-# 2.1. Modelo de Dominio
+# 2.1.1. Modelo de Dominio
 
 ![Dominio_Anemico](/Imagenes/DominioBigPicture.png)
 
