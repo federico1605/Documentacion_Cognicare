@@ -12,9 +12,9 @@
 5. Criterios de aceptación
 ## 3. Diseño tactico alto nivel
 1. [Arquitectura de referencia](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
-2. [Drivers Arquitectonicos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/PlataformaTecnologica.md)
-3. [Justificiación de alternativa de solución](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/PlataformaTecnologica.md)
-4. [Plataforma tecnologica](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/PlataformaTecnologica.md)
+2. [Drivers Arquitectonicos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
+3. [Justificiación de alternativa de solución](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
+4. [Plataforma tecnologica](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 ## 5. Diseño tactico detallado
 1. Diagrama de datos
 2. Diagrama de clases
