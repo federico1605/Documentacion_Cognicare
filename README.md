@@ -7,9 +7,9 @@
 ## 2. Diseño estrategico
 1. Modelado de dominio ([Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/7167742ae2b464e3e56c565941ef1ef2fba878c5/Dise%C3%B1oEstrategico/ModeloDominioAnemico.md) y enriquecido)
 2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/786733cccbef566184f585ec150120d4e0f0ab45/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
-3. Mapa de historias de usuario
-4. Historias de Usuario / Epicas
-5. Criterios de aceptación
+3. [Mapa de historias de usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
+4. [Historias de Usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
+5. [Criterios de aceptación](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
 ## 3. Diseño tactico alto nivel
 1. [Arquitectura de referencia](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 2. [Drivers Arquitectonicos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
