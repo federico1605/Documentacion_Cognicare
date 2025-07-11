@@ -1,4 +1,4 @@
-# 2.1.1. Modelo de Dominio
+# 2.1.1. Modelo de Dominio Anemico
 
 ![Dominio_Anemico](/Imagenes/DominioBigPicture.png)
 
@@ -19,3 +19,6 @@
 - **Estado**: Objeto de dominio que contiene los posibles estados por los que pueden pasar los objetos de la aplicación.
 - **Genero**: Objeto de dominio que contiene el genero.
 
+[Simulación de Datos](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EYhCVYV7G8dAj45Nb7ZF__ABLnQrpi1-BkSfZ19C1Fn-Ow?e=o10o4P)
+
+[Volver](https://github.com/federico1605/Documentacion_Cognicare/tree/main)
