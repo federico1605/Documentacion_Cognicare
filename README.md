@@ -16,7 +16,7 @@
 3. [Justificiación de alternativa de solución](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 4. [Plataforma tecnologica](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 ## 5. Diseño tactico detallado
-1. Diagrama de datos
+1. [Diagrama de datos](https://github.com/federico1605/Documentacion_Cognicare/blob/09b6df8cc1eacfe45651f0538db27aa8c1e5ec9c/Dise%C3%B1oTacticoDetallado/4.1.%20Modelo%20de%20Datos.md)
 2. Diagrama de clases
 3. Diagrama de paquetes
 4. Diagrama de componentes
