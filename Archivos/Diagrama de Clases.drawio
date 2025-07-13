@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.4">
   <diagram name="Página-1" id="4uw8DqAWk537gzBH5fdQ">
-    <mxGraphModel dx="3872" dy="2060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2045" dy="824" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -15,7 +15,7 @@
         <mxCell id="KsVcDdZhZaaucAL4_CSv-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="KsVcDdZhZaaucAL4_CSv-9">
           <mxGeometry y="90" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-13" target="KsVcDdZhZaaucAL4_CSv-9">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=0;endSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-13" target="KsVcDdZhZaaucAL4_CSv-9">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-130" y="70" />
@@ -47,7 +47,7 @@
         <mxCell id="KsVcDdZhZaaucAL4_CSv-16" value="+autenticar(numeroDocumento: String)::&amp;nbsp;&lt;span class=&quot;selected&quot;&gt;Promise&amp;lt;Object&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="KsVcDdZhZaaucAL4_CSv-13">
           <mxGeometry y="78" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-18" target="KsVcDdZhZaaucAL4_CSv-9">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;endSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-18" target="KsVcDdZhZaaucAL4_CSv-9">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-18" target="KsVcDdZhZaaucAL4_CSv-42">
@@ -130,7 +130,7 @@
             <mxPoint x="-11" y="10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-22" target="KsVcDdZhZaaucAL4_CSv-42">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamond;startFill=1;startSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-22" target="KsVcDdZhZaaucAL4_CSv-42">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="730" y="830" />
@@ -148,14 +148,14 @@
             <mxPoint x="7" y="-11" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-108" value="&amp;lt;- Pertenece a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-105">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-108" value="&amp;lt;- Parte de" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-105">
           <mxGeometry x="0.041" relative="1" as="geometry">
             <mxPoint x="-7" y="10" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-109" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-105">
           <mxGeometry x="-0.9141" y="1" relative="1" as="geometry">
-            <mxPoint y="11" as="offset" />
+            <mxPoint x="11" y="11" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-22" value="Estudiante" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -212,7 +212,7 @@
         <mxCell id="KsVcDdZhZaaucAL4_CSv-33" value="+ listar() ::&amp;nbsp;&lt;span class=&quot;selected&quot;&gt;Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;br&gt;&lt;span class=&quot;selected&quot;&gt;- obtenerTodasDB(): Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="KsVcDdZhZaaucAL4_CSv-30">
           <mxGeometry y="68" width="270" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-34" target="KsVcDdZhZaaucAL4_CSv-30">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamond;endFill=0;endSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-34" target="KsVcDdZhZaaucAL4_CSv-30">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-98" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-96">
@@ -249,7 +249,7 @@
         <mxCell id="KsVcDdZhZaaucAL4_CSv-41" value="+ listar() ::&amp;nbsp;&lt;span class=&quot;selected&quot;&gt;Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;br&gt;&lt;span class=&quot;selected&quot;&gt;- obtenerTodosLosGenerosDB(): Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="KsVcDdZhZaaucAL4_CSv-38">
           <mxGeometry y="68" width="330" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-42" target="KsVcDdZhZaaucAL4_CSv-46">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamond;startFill=1;startSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-42" target="KsVcDdZhZaaucAL4_CSv-46">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1620" y="885" />
@@ -272,7 +272,7 @@
             <mxPoint y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-119" value="&amp;lt;- Pertenece a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-115">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-119" value="&amp;lt;- Parte de" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-115">
           <mxGeometry x="-0.0242" y="-2" relative="1" as="geometry">
             <mxPoint y="13" as="offset" />
           </mxGeometry>
@@ -316,7 +316,7 @@
         <mxCell id="KsVcDdZhZaaucAL4_CSv-45" value="+ crear(datos: Object) ::&amp;nbsp;&lt;span class=&quot;selected&quot;&gt;Promise&amp;lt;Object&amp;gt;&lt;/span&gt;&lt;div&gt;+&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;modificar(sigla: String, numDoc: String, datos: Object): Promise&amp;lt;Object&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ consultarPorEstudiante(tipoDoc: String, numeroDoc: String) ::&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;br&gt;&lt;/span&gt;&lt;span class=&quot;selected&quot;&gt;- crearEntrenamientoCognitivoDB(datos: Object): Promise&amp;lt;Object&amp;gt;&lt;br&gt;        - modificarEntrenamientoCognitivoDB(datos: Object): Promise&amp;lt;Object&amp;gt;&lt;br&gt;        - obtenerEntrenamientoPorDocumentoDB(tipoDoc: String, numDoc: String): Promise&amp;lt;Array&amp;lt;Object&amp;gt;&amp;gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="KsVcDdZhZaaucAL4_CSv-42">
           <mxGeometry y="88" width="560" height="102" as="geometry" />
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-46" target="KsVcDdZhZaaucAL4_CSv-50">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;endSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-46" target="KsVcDdZhZaaucAL4_CSv-50">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-121" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-120">
@@ -334,7 +334,7 @@
             <mxPoint x="-13" y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-46" target="KsVcDdZhZaaucAL4_CSv-54">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamond;startFill=1;startSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-46" target="KsVcDdZhZaaucAL4_CSv-54">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2060" y="900" />
@@ -354,10 +354,10 @@
         </mxCell>
         <mxCell id="KsVcDdZhZaaucAL4_CSv-128" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-125">
           <mxGeometry x="-0.8709" y="1" relative="1" as="geometry">
-            <mxPoint x="-4" y="11" as="offset" />
+            <mxPoint x="6" y="11" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-129" value="&amp;lt;- Pertenecen a&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-125">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-129" value="&amp;lt;-Parte de" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KsVcDdZhZaaucAL4_CSv-125">
           <mxGeometry x="-0.2527" y="-1" relative="1" as="geometry">
             <mxPoint x="18" y="9" as="offset" />
           </mxGeometry>
@@ -483,10 +483,10 @@
             <mxPoint x="-8" y="11" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KsVcDdZhZaaucAL4_CSv-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.005;entryY=0.147;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-25" target="KsVcDdZhZaaucAL4_CSv-9">
+        <mxCell id="KsVcDdZhZaaucAL4_CSv-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.005;entryY=0.147;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;endSize=15;" edge="1" parent="1" source="KsVcDdZhZaaucAL4_CSv-25" target="KsVcDdZhZaaucAL4_CSv-9">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-330" y="744" />
+              <mxPoint x="-330" y="809" />
               <mxPoint x="-330" y="28" />
             </Array>
           </mxGeometry>
