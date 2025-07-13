@@ -1,4 +1,72 @@
+# Arquitectura de Referencia
 ![Arquitectura de Referencia](/Imagenes/Arquitectura_Referencia.png)
+
+## 1. Interacción del Usuario (User → Web/Http)
+
+### Usuario
+Un jugador o administrador inicia la interacción con la aplicación, desde un **navegador web**.
+
+### Web/Http
+Las solicitudes del usuario viajan a través de la web utilizando el protocolo **HTTP(S)**, para alcanzar el punto de entrada de la aplicación.  
+Esta capa se encarga de **recibir y enrutar** las peticiones iniciales hacia los componentes adecuados del sistema.
+
+---
+
+## 2. Procesamiento Centralizado (Web/Http → Back End)
+
+### Back End
+Este componente actúa como el **cerebro de la aplicación**, recibiendo todas las solicitudes provenientes de la capa Web/Http.  
+Es responsable de procesar la lógica de negocio central, incluyendo:
+
+- **Gestión de Usuarios**:  
+  Autenticación, autorización, registro y administración de perfiles de usuario.
+
+- **Control del Flujo de Entrenamiento**:  
+  Administra el estado y progreso de los usuarios a través de las diferentes variables de entrenamiento.
+
+- **Orquestación**:  
+  Decide cuándo y cómo interactuar con otros componentes del sistema para cumplir con la solicitud del usuario.
+
+---
+
+## 3. Persistencia de Datos (Back End → Data Bases)
+
+### Data Bases
+Este componente es el **repositorio de información persistente** del sistema.  
+El Back End interactúa con él para:
+
+- **Almacenar Datos**:  
+  Guarda información como perfiles de usuario, credenciales y el progreso detallado en las variables de entrenamiento.
+
+- **Recuperar Datos**:  
+  Consulta y obtiene la información necesaria para responder al usuario o realizar cálculos internos.
+
+- **Asegurar la Integridad**:  
+  Garantiza que los datos se almacenen de manera consistente y fiable, manteniendo la coherencia del sistema.
+
+---
+
+## 4. Lógica Especializada (Back End → Variables de Entrenamiento)
+
+### Variables de Entrenamiento
+Este componente representa un **servicio o módulo externo especializado** que encapsula la lógica compleja relacionada con las variables de entrenamiento.
+
+El Back End se comunica con este servicio para:
+
+- Obtener datos específicos de entrenamiento.
+- Validar interacciones, como respuestas o acciones del usuario.
+- Generar contenido especializado.
+
+**Línea Punteada de Retorno**:  
+Este servicio devuelve los datos o resultados procesados al Back End, que los utiliza para:
+
+- Actualizar la base de datos.
+- Formular la respuesta final al usuario.
+
+
+# Arquetipo de Referencia
+
+![Arquetipo de Referencia](/Imagenes/Arquetipo_Referencia.png)
 
 La arquitectura propuesta representa el módulo centralizador de una aplicación de entrenamiento cognitivo enfocada en variables de entrenamiento. Este componente actúa como el punto de entrada principal para los usuarios y la gestión de las variables de entrenamiento, además de administrar los usuarios y su progreso individual en cada variable.
 
