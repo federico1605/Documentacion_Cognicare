@@ -3,7 +3,28 @@
   "info": {
     "title": "Documentación de la API de CentralizadorBackEnd",
     "version": "1.0.0",
-    "description": "API para la gestión de datos de CentralizadorBackEnd, incluyendo estudiantes, entrenamientos cognitivos, y utilidades.\n\n        ## 🔐 Autenticación\n        **IMPORTANTE:** La mayoría de endpoints requieren autenticación con token Bearer JWT. Para usar los endpoints protegidos, obtén un token desde la sección \"Autenticación\" y haz clic en el botón \"Authorize\" para pegarlo.",
+    "description": "|
+    API REST para la gestión de datos de la plataforma CogniCare, incluyendo estudiantes, entrenadores y entrenamientos cognitivos.
+
+    ## 🔐 Autenticación
+    > **IMPORTANTE:** La mayoría de los endpoints requieren un token de autenticación (JWT Bearer).
+
+    Para acceder a los endpoints protegidos, sigue estos pasos:
+    1. **Obtén tu token:** Realiza una petición `POST` a `/api/login/admin` o `/api/login/entrenador` con tus credenciales.
+    2. **Autoriza tus peticiones:** Haz clic en el botón **"Authorize"** (arriba a la derecha) y pega tu token en el campo `bearerAuth` con el formato `Bearer <TU_TOKEN_JWT>`.
+
+    ## 👤 Roles y Permisos
+    La API cuenta con dos roles principales con diferentes niveles de acceso:
+
+    ### **Admin**
+    - Gestión completa de entrenadores (CRUD).
+    - Visualización de todos los informes de entrenamiento.
+    - Acceso total a las utilidades del sistema.
+
+    ### **Entrenador**
+    - Gestión de estudiantes y sus entrenamientos cognitivos.
+    - Creación y seguimiento de sesiones de entrenamiento.
+    - Visualización de informes de los estudiantes asignados. |",
     "contact": {
       "name": "Equipo de Desarrollo",
       "email": "devteam@example.com"
