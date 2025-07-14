@@ -15,16 +15,16 @@
 2. [Drivers Arquitectonicos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 3. [Justificiación de alternativa de solución](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 4. [Plataforma tecnologica](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
-## 5. Diseño tactico detallado
+## 4. Diseño tactico detallado
 1. [Diagrama de datos](https://github.com/federico1605/Documentacion_Cognicare/blob/09b6df8cc1eacfe45651f0538db27aa8c1e5ec9c/Dise%C3%B1oTacticoDetallado/4.1.%20Modelo%20de%20Datos.md)
 2. [Diagrama de clases](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.2.%20Diagrama%20de%20Clases.md)
 3. [Diagrama de paquetes](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.3.%20Diagrama%20de%20Paquetes.md)
 4. [Diagrama de componentes](https://github.com/federico1605/Documentacion_Cognicare/blob/a9070db68f476f31c61f061dc6df8072e3311502/Dise%C3%B1oTacticoDetallado/4.4.%20Diagrama%20de%20Componentes.md)
 5. Contratos de API
-## 6. Construccion
+## 5. Construccion
 1. Analisis estatico de codigo
 2. Pruebas unitarias
-## 7. Entregas y despliegue
+## 6. Entregas y despliegue
 1. Estrategia de entrega
 2. Check list de Release
 3. Manual de usuario
