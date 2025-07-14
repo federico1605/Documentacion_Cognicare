@@ -3425,7 +3425,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/GeneroVista"
+                        "$ref": "#/components/schemas/Genero"
                       }
                     }
                   }
@@ -3471,7 +3471,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/TipoDocumentoVista"
+                        "$ref": "#/components/schemas/TipoDocumento"
                       }
                     }
                   }
@@ -3517,7 +3517,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/ProgramaVista"
+                        "$ref": "#/components/schemas/Programa"
                       }
                     }
                   }
@@ -3563,7 +3563,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/TipoVariableCognitivaVista"
+                        "$ref": "#/components/schemas/TipoVariableCognitiva"
                       }
                     }
                   }
