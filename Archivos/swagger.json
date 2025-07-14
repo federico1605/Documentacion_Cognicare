@@ -1,0 +1,3918 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentación de la API de CentralizadorBackEnd",
+    "version": "1.0.0",
+    "description": "API para la gestión de datos de CentralizadorBackEnd, incluyendo estudiantes, entrenamientos cognitivos, y utilidades.\n\n        ## 🔐 Autenticación\n        **IMPORTANTE:** La mayoría de endpoints requieren autenticación con token Bearer JWT. Para usar los endpoints protegidos, obtén un token desde la sección \"Autenticación\" y haz clic en el botón \"Authorize\" para pegarlo.",
+    "contact": {
+      "name": "Equipo de Desarrollo",
+      "email": "devteam@example.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "Servidor de Desarrollo Local"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Token JWT obtenido al hacer login. Formato: `Bearer <tu_token>`"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Mensaje de error."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "description": "Mensaje de validación del error."
+                },
+                "param": {
+                  "type": "string",
+                  "description": "Parámetro asociado al error."
+                },
+                "location": {
+                  "type": "string",
+                  "description": "Ubicación del error (e.g., \"body\")."
+                }
+              }
+            }
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Inicio de sesión exitoso."
+          },
+          "token": {
+            "type": "string",
+            "description": "Token JWT para autenticación."
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "numeroDocumento": {
+                "type": "string"
+              },
+              "correo": {
+                "type": "string",
+                "format": "email"
+              },
+              "rol": {
+                "type": "string",
+                "enum": [
+                  "admin",
+                  "entrenador"
+                ],
+                "description": "Rol del usuario autenticado."
+              }
+            }
+          }
+        }
+      },
+      "Entrenador": {
+        "type": "object",
+        "description": "Representa a un entrenador en el sistema.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "El ID único del entrenador."
+          },
+          "tipoDocumento": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID de la tabla TipoDocumento."
+          },
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del entrenador.",
+            "example": "Mónica"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del entrenador.",
+            "example": "Escobar Melendez"
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "description": "Número de documento del entrenador.",
+            "example": "123456789"
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha de inicio del contrato del entrenador."
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha de finalización del contrato del entrenador."
+          },
+          "correo": {
+            "type": "string",
+            "format": "email",
+            "description": "Correo electrónico del entrenador."
+          }
+        }
+      },
+      "EntrenadorFacultadResponse": {
+        "type": "object",
+        "properties": {
+          "facultad_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID de la facultad."
+          },
+          "nombre_facultad": {
+            "type": "string",
+            "description": "Nombre de la facultad.",
+            "example": "Ingenierías"
+          }
+        }
+      },
+      "DatosEntrenadorPorCorreoResponse": {
+        "type": "object",
+        "properties": {
+          "numeroDocumento": {
+            "type": "string",
+            "description": "Número de documento del entrenador."
+          },
+          "siglaTipoDocumento": {
+            "type": "string",
+            "description": "Sigla del tipo de documento."
+          },
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del entrenador."
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del entrenador."
+          }
+        }
+      },
+      "Estudiante": {
+        "type": "object",
+        "description": "Representa a un estudiante en el sistema.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "El ID único del estudiante."
+          },
+          "tipoDocumento": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID de la tabla TipoDocumento."
+          },
+          "genero": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID de la tabla Genero."
+          },
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del estudiante.",
+            "example": "Ana Lucía"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del estudiante.",
+            "example": "García Vélez"
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "description": "Número de documento del estudiante.",
+            "example": "1039456789"
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Fecha de nacimiento del estudiante."
+          },
+          "correo": {
+            "type": "string",
+            "format": "email",
+            "description": "Correo electrónico del estudiante."
+          }
+        }
+      },
+      "EstudianteEntrenamientoPorFacultad": {
+        "type": "object",
+        "description": "Datos resumidos de un estudiante y su entrenamiento, para listas por facultad.",
+        "properties": {
+          "nombre_estudiante": {
+            "type": "string"
+          },
+          "apellido_estudiante": {
+            "type": "string"
+          },
+          "numero_documento_estudiante": {
+            "type": "string"
+          },
+          "tipo_documento": {
+            "type": "string",
+            "example": "CC"
+          },
+          "estado_entrenamiento": {
+            "type": "string",
+            "nullable": true,
+            "example": "En Progreso"
+          },
+          "fecha_inicio_entrenamiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "EntrenamientoCognitivoDetalle": {
+        "type": "object",
+        "description": "Detalle completo del entrenamiento de un estudiante.",
+        "properties": {
+          "estudianteNombres": {
+            "type": "string"
+          },
+          "estudianteApellidos": {
+            "type": "string"
+          },
+          "estudianteTipoDocumento": {
+            "type": "string"
+          },
+          "estudianteNumeroDocumento": {
+            "type": "string"
+          },
+          "entrenamientoFechaInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "entrenamientoFechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "variableCognitivaNombre": {
+            "type": "string"
+          },
+          "asignacionVariableEstado": {
+            "type": "string"
+          },
+          "entrenamientoEstadoGeneral": {
+            "type": "string"
+          },
+          "asignacionVariableId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ProgresoVariableDetalle": {
+        "type": "object",
+        "description": "Muestra el progreso detallado de una variable cognitiva asignada.",
+        "properties": {
+          "asignacionVariableId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entrenamientoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "estudianteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "estudianteNombres": {
+            "type": "string"
+          },
+          "estudianteApellidos": {
+            "type": "string"
+          },
+          "entrenadorNombres": {
+            "type": "string"
+          },
+          "variableCognitivaNombre": {
+            "type": "string"
+          },
+          "asignacionVariableEstado": {
+            "type": "string"
+          },
+          "asignacionNivelInicial": {
+            "type": "object",
+            "description": "Objeto JSONB con el estado inicial del nivel."
+          },
+          "asignacionMetricasActuales": {
+            "type": "object",
+            "description": "Objeto JSONB con las métricas actuales."
+          },
+          "totalSesiones": {
+            "type": "integer"
+          },
+          "sesionesFinalizadas": {
+            "type": "integer"
+          },
+          "sesionesAbandonadas": {
+            "type": "integer"
+          },
+          "sesionesDetalle": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sesionId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "numeroSesion": {
+                  "type": "integer"
+                },
+                "estado": {
+                  "type": "string"
+                },
+                "fechaInicio": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fechaFin": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "observacion": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Facultad": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "Ingenierías"
+          }
+        }
+      },
+      "InformeEntrenador": {
+        "type": "object",
+        "properties": {
+          "entrenamientoid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "estudiantenombres": {
+            "type": "string"
+          },
+          "estudianteapellidos": {
+            "type": "string"
+          },
+          "estudiantetipodocumento": {
+            "type": "string"
+          },
+          "estudiantenumerodocumento": {
+            "type": "string"
+          },
+          "estadoentrenamiento": {
+            "type": "string"
+          },
+          "fechainicioentrenamiento": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "DetalleInformeAdmin": {
+        "type": "object",
+        "properties": {
+          "entrenamiento_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nombre_estudiante": {
+            "type": "string"
+          },
+          "apellido_estudiante": {
+            "type": "string"
+          },
+          "variables_finalizadas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "nombre_variable": {
+                  "type": "string"
+                },
+                "estado_variable": {
+                  "type": "string"
+                },
+                "fecha_asignacion": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fecha_finalizacion": {
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "TipoDocumento": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sigla": {
+            "type": "string",
+            "example": "CC",
+            "description": "La sigla del tipo de documento."
+          },
+          "nombre": {
+            "type": "string",
+            "example": "Cédula de Ciudadanía"
+          }
+        }
+      },
+      "Genero": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "El nombre del género.",
+            "example": "Masculino"
+          }
+        }
+      },
+      "Programa": {
+        "type": "object",
+        "properties": {
+          "nombre_programa": {
+            "type": "string",
+            "description": "El nombre del programa académico.",
+            "example": "Ingeniería de Sistemas"
+          }
+        }
+      },
+      "TipoVariableCognitiva": {
+        "type": "object",
+        "properties": {
+          "id_variable_cognitiva": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nombre_variable_cognitiva": {
+            "type": "string",
+            "example": "Lectura Crítica"
+          }
+        }
+      },
+      "VariableCognitiva": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "activa": {
+            "type": "boolean"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "Lectura Crítica"
+          },
+          "descripcion": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/admin/entrenadores": {
+      "post": {
+        "summary": "Registra un nuevo entrenador en el sistema.",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "siglaTipoDocumento",
+                  "numeroDocumento",
+                  "nombres",
+                  "apellidos",
+                  "correo",
+                  "nombresFacultades"
+                ],
+                "properties": {
+                  "siglaTipoDocumento": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del entrenador (ej. \"CC\", \"TI\").",
+                    "example": "CC"
+                  },
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento único del entrenador.",
+                    "example": "1012345678"
+                  },
+                  "nombres": {
+                    "type": "string",
+                    "description": "Nombres del entrenador.",
+                    "example": "Carlos Andres"
+                  },
+                  "apellidos": {
+                    "type": "string",
+                    "description": "Apellidos del entrenador.",
+                    "example": "Ramirez Gomez"
+                  },
+                  "correo": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Correo electrónico único del entrenador.",
+                    "example": "carlos.ramirez@example.com"
+                  },
+                  "nombresFacultades": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista con los nombres de las facultades a las que se asignará. Debe contener al menos una.",
+                    "example": [
+                      "Ingenierías",
+                      "Ciencias Sociales"
+                    ]
+                  },
+                  "fechaFin": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Opcional. Fecha de finalización del contrato. Por defecto, 6 meses desde hoy.",
+                    "example": "2026-01-31"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entrenador registrado exitosamente."
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "409": {
+            "description": "Conflicto, el entrenador ya existe (documento o correo duplicado).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Obtiene la lista de todos los entrenadores.",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de entrenadores obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Entrenadores obtenidos exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idEntrenador": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "tipoDocumentoEntrenador": {
+                            "type": "string"
+                          },
+                          "numeroDocumentoEntrenador": {
+                            "type": "string"
+                          },
+                          "nombresEntrenador": {
+                            "type": "string"
+                          },
+                          "apellidosEntrenador": {
+                            "type": "string"
+                          },
+                          "correoEntrenador": {
+                            "type": "string",
+                            "format": "email"
+                          },
+                          "fechaInicioContrato": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "fechaFinContrato": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "estadoContrato": {
+                            "type": "string",
+                            "example": "Activo"
+                          },
+                          "facultadesAsignadas": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/admin/entrenadores/{entrenadorID}": {
+      "put": {
+        "summary": "Actualiza la información de un entrenador existente.",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entrenadorID",
+            "required": true,
+            "description": "ID del entrenador (UUID) a modificar.",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "b5f8db27-c5e0-4764-a7c8-9f7eb42302a1"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto con los campos a actualizar. Solo es necesario incluir los campos que se desean cambiar.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pNuevosNombres": {
+                    "type": "string",
+                    "description": "Los nuevos nombres del entrenador.",
+                    "example": "Carlos Alberto"
+                  },
+                  "pNuevosApellidos": {
+                    "type": "string",
+                    "description": "Los nuevos apellidos del entrenador.",
+                    "example": "Gomez Ramirez"
+                  },
+                  "pNuevoCorreo": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "El nuevo correo electrónico del entrenador.",
+                    "example": "c.ramirez@example.com"
+                  },
+                  "pNuevaFechaFin": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "La nueva fecha de finalización del contrato.",
+                    "example": "2027-12-31"
+                  },
+                  "pNuevosNombresFacultades": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Reemplazo completo de la lista de facultades del entrenador.",
+                    "example": [
+                      "Ingenierías"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entrenador actualizado exitosamente."
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "404": {
+            "description": "Entrenador no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/admin/entrenadores/{entrenadorID}/desactivar": {
+      "put": {
+        "summary": "Desactiva un entrenador existente.",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entrenadorID",
+            "required": true,
+            "description": "ID del entrenador (UUID) a desactivar.",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrenador desactivado exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Entrenador desactivado exitosamente."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "404": {
+            "description": "Entrenador no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "El entrenador con ID <UUID> no fue encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/admin/informes/entrenamientos": {
+      "get": {
+        "summary": "Obtiene la lista de todos los entrenamientos para la vista de informes del administrador.",
+        "tags": [
+          "InformesAdmin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de entrenamientos obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de entrenamientos obtenida exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "entrenamiento_id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "nombre_estudiante": {
+                            "type": "string"
+                          },
+                          "apellido_estudiante": {
+                            "type": "string"
+                          },
+                          "numero_documento_estudiante": {
+                            "type": "string"
+                          },
+                          "tipo_documento_estudiante_sigla": {
+                            "type": "string"
+                          },
+                          "fecha_inicio": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "fecha_fin": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "estado": {
+                            "type": "string"
+                          },
+                          "nombre_entrenador": {
+                            "type": "string"
+                          },
+                          "apellido_entrenador": {
+                            "type": "string"
+                          },
+                          "facultad_nombre": {
+                            "type": "string"
+                          },
+                          "programa_nombre": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/admin/informes/entrenamientos/{entrenamientoId}": {
+      "get": {
+        "summary": "Obtiene el detalle de un informe de entrenamiento específico (variables finalizadas).",
+        "tags": [
+          "InformesAdmin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entrenamientoId",
+            "required": true,
+            "description": "ID del entrenamiento (UUID) para el cual se desea obtener el detalle.",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalle del informe de entrenamiento obtenido exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detalle del entrenamiento <UUID> obtenido correctamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "entrenamiento_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "nombre_estudiante": {
+                          "type": "string"
+                        },
+                        "apellido_estudiante": {
+                          "type": "string"
+                        },
+                        "numero_documento_estudiante": {
+                          "type": "string"
+                        },
+                        "tipo_documento_estudiante_sigla": {
+                          "type": "string"
+                        },
+                        "nombre_entrenador": {
+                          "type": "string"
+                        },
+                        "apellido_entrenador": {
+                          "type": "string"
+                        },
+                        "facultad_nombre": {
+                          "type": "string"
+                        },
+                        "programa_nombre": {
+                          "type": "string"
+                        },
+                        "fecha_inicio": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "fecha_fin": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "estado_entrenamiento": {
+                          "type": "string"
+                        },
+                        "variables_finalizadas": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "nombre_variable": {
+                                "type": "string"
+                              },
+                              "estado_variable": {
+                                "type": "string"
+                              },
+                              "fecha_asignacion": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "fecha_finalizacion": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "404": {
+            "description": "No se encontró el entrenamiento especificado o no se encontraron variables finalizadas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontró el entrenamiento con ID <UUID> o no se encontraron variables finalizadas para este entrenamiento."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/login/admin": {
+      "post": {
+        "summary": "Inicia sesión como administrador.",
+        "tags": [
+          "Autenticación"
+        ],
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "numeroDocumento"
+                ],
+                "properties": {
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento del administrador.",
+                    "example": "1234567890"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso. Retorna un token JWT.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "description": "Credenciales inválidas o no autorizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/login/entrenador": {
+      "post": {
+        "summary": "Inicia sesión como entrenador.",
+        "tags": [
+          "Autenticación"
+        ],
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "correo"
+                ],
+                "properties": {
+                  "correo": {
+                    "type": "string",
+                    "description": "Correo electrónico del entrenador.",
+                    "example": "entrenador@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso. Retorna un token JWT.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "description": "Credenciales inválidas o no autorizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/entrenadores/facultad-entrenador/{correo}": {
+      "get": {
+        "summary": "Obtiene las facultades asociadas a un entrenador por su correo electrónico.",
+        "tags": [
+          "Entrenadores"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correo",
+            "required": true,
+            "description": "Correo electrónico del entrenador.",
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "example": "entrenador@example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de facultades asociadas al entrenador.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "facultad_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "ID de la facultad.",
+                        "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+                      },
+                      "nombre_facultad": {
+                        "type": "string",
+                        "description": "Nombre de la facultad.",
+                        "example": "Facultad de Ingeniería"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Correo electrónico inválido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Correo electrónico inválido."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron facultades para el entrenador con el correo proporcionado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontraron facultades para el entrenador con el correo proporcionado."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error interno del servidor al obtener facultades."
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Detalle del error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenadores/datosporcorreo/{correo}": {
+      "get": {
+        "summary": "Obtiene los datos de un entrenador por su correo electrónico.",
+        "tags": [
+          "Entrenadores"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correo",
+            "required": true,
+            "description": "Correo electrónico del entrenador.",
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "example": "monica.melendez@uco.edu.co"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datos del entrenador obtenidos exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Datos del entrenador obtenidos exitosamente"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "numeroDocumento": {
+                          "type": "string",
+                          "description": "Número de documento del entrenador.",
+                          "example": "123456789"
+                        },
+                        "siglaTipoDocumento": {
+                          "type": "string",
+                          "description": "Sigla del tipo de documento.",
+                          "example": "CC"
+                        },
+                        "nombres": {
+                          "type": "string",
+                          "description": "Nombres del entrenador.",
+                          "example": "Juan Carlos"
+                        },
+                        "apellidos": {
+                          "type": "string",
+                          "description": "Apellidos del entrenador.",
+                          "example": "Pérez García"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "El correo electrónico debe tener un formato válido."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontró un entrenador con el correo proporcionado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontró un entrenador con el correo electrónico proporcionado."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error interno del servidor."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenadores/informes": {
+      "get": {
+        "summary": "Obtiene la lista de entrenamientos asignados al entrenador autenticado.",
+        "tags": [
+          "InformesEntrenador"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de entrenamientos obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de entrenamientos asignados obtenida exitosamente."
+                    },
+                    "total": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "entrenamientos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "entrenamientoid": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "ID del entrenamiento cognitivo."
+                          },
+                          "estudiantenombres": {
+                            "type": "string",
+                            "description": "Nombres del estudiante.",
+                            "example": "Pedro León"
+                          },
+                          "estudianteapellidos": {
+                            "type": "string",
+                            "description": "Apellidos del estudiante.",
+                            "example": "García Pérez"
+                          },
+                          "estudiantetipodocumento": {
+                            "type": "string",
+                            "description": "Sigla del tipo de documento del estudiante.",
+                            "example": "CC"
+                          },
+                          "estudiantenumerodocumento": {
+                            "type": "string",
+                            "description": "Número de documento del estudiante.",
+                            "example": "1036402111"
+                          },
+                          "estadoentrenamiento": {
+                            "type": "string",
+                            "description": "Estado actual del entrenamiento.",
+                            "example": "Por Iniciar"
+                          },
+                          "fechainicioentrenamiento": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Fecha de inicio del entrenamiento."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado. El token no fue proporcionado o es inválido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Acceso prohibido. El usuario no tiene el rol de 'Entrenador'.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenadores/informes/{entrenamientoId}": {
+      "get": {
+        "summary": "Obtiene el detalle de un informe de entrenamiento si pertenece al entrenador autenticado.",
+        "tags": [
+          "InformesEntrenador"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entrenamientoId",
+            "required": true,
+            "description": "ID del entrenamiento (UUID) para el cual se desea obtener el detalle.",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalle del informe de entrenamiento obtenido exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Detalle del entrenamiento <UUID> obtenido correctamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "entrenamiento_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "nombre_estudiante": {
+                          "type": "string"
+                        },
+                        "apellido_estudiante": {
+                          "type": "string"
+                        },
+                        "numero_documento_estudiante": {
+                          "type": "string"
+                        },
+                        "tipo_documento_estudiante_sigla": {
+                          "type": "string"
+                        },
+                        "nombre_entrenador": {
+                          "type": "string"
+                        },
+                        "apellido_entrenador": {
+                          "type": "string"
+                        },
+                        "facultad_nombre": {
+                          "type": "string"
+                        },
+                        "programa_nombre": {
+                          "type": "string"
+                        },
+                        "fecha_inicio": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "fecha_fin": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "estado_entrenamiento": {
+                          "type": "string"
+                        },
+                        "variables_finalizadas": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "nombre_variable": {
+                                "type": "string"
+                              },
+                              "estado_variable": {
+                                "type": "string"
+                              },
+                              "fecha_asignacion": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "fecha_finalizacion": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "401": {
+            "description": "No autorizado. El token no fue proporcionado o es inválido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Acceso prohibido, el informe no pertenece a este entrenador.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entrenamiento no encontrado o no se encontraron variables finalizadas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontró el entrenamiento con ID <UUID> o no se encontraron variables finalizadas para este entrenamiento."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/entrenadores/asignar-entrenamiento": {
+      "post": {
+        "summary": "Crea una relación entre un entrenador y un entrenamiento cognitivo.",
+        "tags": [
+          "Entrenadores"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "entrenadorId",
+                  "entrenamientoCognitivoId"
+                ],
+                "properties": {
+                  "entrenadorId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID del entrenador a asignar.",
+                    "example": "d9428888-122b-11e1-b85c-61cd3cbb3210"
+                  },
+                  "entrenamientoCognitivoId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID del entrenamiento cognitivo a asignar.",
+                    "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Relación entrenador-entrenamiento creada exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Relación entrenador-entrenamiento creada exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "relacionId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "ID de la relación creada.",
+                          "example": "2e67debb-69cc-47bc-b960-b57d6a7ec906"
+                        },
+                        "entrenadorId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "ID del entrenador asignado.",
+                          "example": "d9428888-122b-11e1-b85c-61cd3cbb3210"
+                        },
+                        "entrenamientoCognitivoId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "ID del entrenamiento cognitivo asignado.",
+                          "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "El ID del entrenador es requerido y debe ser una cadena de texto no vacía."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Uno de los IDs proporcionados no existe.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "El ID del entrenador proporcionado no existe en la base de datos."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ya existe una relación entre este entrenador y este entrenamiento.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Ya existe una relación entre este entrenador y este entrenamiento cognitivo."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error interno del servidor."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/facultad/{facultadId}/estudiantes": {
+      "get": {
+        "summary": "Obtiene la lista de estudiantes y sus datos de entrenamiento para una facultad específica.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "facultadId",
+            "required": true,
+            "description": "ID de la facultad (UUID) para la cual se desean obtener los estudiantes.",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datos de estudiantes obtenidos exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Datos de estudiantes para la facultad ID <UUID> obtenidos correctamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EstudianteEntrenamientoPorFacultad"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El ID de la facultad proporcionado es inválido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron estudiantes para la facultad especificada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontraron estudiantes para la facultad con ID <UUID>."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/estudiante/detalle-entrenamiento": {
+      "post": {
+        "summary": "Obtiene el detalle del entrenamiento cognitivo de un estudiante por su tipo y número de documento.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tipoDocumento",
+                  "numeroDocumento"
+                ],
+                "properties": {
+                  "tipoDocumento": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del estudiante (e.g., \"CC\", \"TI\").",
+                    "example": "CC"
+                  },
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento del estudiante.",
+                    "example": "1036402111"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Detalle del entrenamiento cognitivo obtenido exitosamente o mensaje si no se encontró.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/EntrenamientoCognitivoDetalle"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos (e.g., tipoDocumento o numeroDocumento faltantes o vacíos).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/crear": {
+      "post": {
+        "summary": "Registra un nuevo entrenamiento cognitivo para un estudiante.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "siglaTipoDocEstudiante",
+                  "numeroDocEstudiante",
+                  "siglaTipoDocEntrenador",
+                  "numeroDocEntrenador",
+                  "fechaFinEntrenamiento",
+                  "variablesCognitivas"
+                ],
+                "properties": {
+                  "siglaTipoDocEstudiante": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del estudiante (ej. \"CC\", \"TI\").",
+                    "example": "CC"
+                  },
+                  "numeroDocEstudiante": {
+                    "type": "string",
+                    "description": "Número de documento del estudiante.",
+                    "example": "1012345678"
+                  },
+                  "siglaTipoDocEntrenador": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del entrenador.",
+                    "example": "TI"
+                  },
+                  "numeroDocEntrenador": {
+                    "type": "string",
+                    "description": "Número de documento del entrenador.",
+                    "example": "987654321"
+                  },
+                  "fechaFinEntrenamiento": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha y hora de finalización del entrenamiento en formato \"YYYY-MM-DD HH:MM:SS\".",
+                    "example": "2025-12-31 23:59:59"
+                  },
+                  "variablesCognitivas": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array de nombres de las variables cognitivas a entrenar.",
+                    "example": [
+                      "Atención Sostenida",
+                      "Memoria de Trabajo"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entrenamiento cognitivo registrado exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Entrenamiento cognitivo registrado exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "siglaTipoDocEstudiante": {
+                          "type": "string"
+                        },
+                        "numeroDocEstudiante": {
+                          "type": "string"
+                        },
+                        "siglaTipoDocEntrenador": {
+                          "type": "string"
+                        },
+                        "numeroDocEntrenador": {
+                          "type": "string"
+                        },
+                        "fechaFinEntrenamiento": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "variablesCognitivas": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "El UUID del entrenamiento recién creado."
+                        },
+                        "mensajeBD": {
+                          "type": "string",
+                          "description": "Mensaje devuelto por la función de la base de datos.",
+                          "example": "Entrenamiento cognitivo registrado exitosamente."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o faltantes, o entidad no encontrada (estudiante, entrenador, variable cognitiva).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflicto, el entrenamiento ya existe o hay una regla de negocio violada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/asignacion": {
+      "post": {
+        "summary": "Registra un nuevo entrenamiento y su asignación de variable cognitiva inicial.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "estudianteId",
+                  "fechaInicio",
+                  "tiposVariablesCognitivasIds",
+                  "nivelInicial",
+                  "metricas"
+                ],
+                "properties": {
+                  "estudianteId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "ID del estudiante al que se le asigna el entrenamiento.",
+                    "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+                  },
+                  "fechaInicio": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha de inicio del entrenamiento en formato 'YYYY-MM-DD HH:MM:SS'.",
+                    "example": "2024-05-21 10:00:00"
+                  },
+                  "tiposVariablesCognitivasIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "description": "Array de IDs de los tipos de variables cognitivas a asignar.",
+                    "example": [
+                      "a1b2c3d4-e5f6-7890-1234-567890abcde0",
+                      "a1b2c3d4-e5f6-7890-1234-567890abcde1"
+                    ]
+                  },
+                  "nivelInicial": {
+                    "type": "object",
+                    "description": "Objeto JSON que describe el nivel inicial.",
+                    "example": {
+                      "dificultad": "baja",
+                      "items": 5
+                    }
+                  },
+                  "metricas": {
+                    "type": "object",
+                    "description": "Objeto JSON que describe las métricas iniciales.",
+                    "example": {
+                      "precision_objetivo": 95,
+                      "tiempo_maximo": 120
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entrenamiento y asignación creados con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Entrenamiento y asignaciones de variables creados con éxito."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Se debe proporcionar al menos un ID de tipo de variable cognitiva en un arreglo."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/progreso/{asignacionId}": {
+      "get": {
+        "summary": "Obtiene el detalle de progreso de una variable cognitiva asignada específica.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asignacionId",
+            "required": true,
+            "description": "ID de la asignación de la variable (UUID).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalles del progreso obtenidos exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ProgresoVariableDetalle"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ID de asignación inválido."
+          },
+          "401": {
+            "description": "No autorizado (token no válido)."
+          },
+          "403": {
+            "description": "Prohibido (rol no permitido)."
+          },
+          "404": {
+            "description": "No se encontraron detalles de progreso para el ID proporcionado."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/estudiante/{siglaTipoDocEstudiante}/{numeroDocEstudiante}": {
+      "patch": {
+        "summary": "Modifica un entrenamiento cognitivo existente de un estudiante.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "siglaTipoDocEstudiante",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Sigla del tipo de documento del estudiante cuyo entrenamiento se va a modificar.",
+            "example": "CC"
+          },
+          {
+            "in": "path",
+            "name": "numeroDocEstudiante",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Número de documento del estudiante cuyo entrenamiento se va a modificar.",
+            "example": "1012345678"
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto con los campos a actualizar. Solo es necesario incluir los campos que se desean cambiar.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "variablesAAgregar": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista de nombres de variables cognitivas a añadir al entrenamiento.",
+                    "example": [
+                      "Velocidad de Procesamiento"
+                    ]
+                  },
+                  "variablesARemover": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista de nombres de variables cognitivas a quitar del entrenamiento.",
+                    "example": [
+                      "Memoria de Trabajo"
+                    ]
+                  },
+                  "siglaTipoDocNuevoEntrenador": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del nuevo entrenador. Debe ir junto con el número.",
+                    "example": "CC"
+                  },
+                  "numeroDocNuevoEntrenador": {
+                    "type": "string",
+                    "description": "Número de documento del nuevo entrenador. Debe ir junto con la sigla.",
+                    "example": "9876543210"
+                  },
+                  "nuevaFechaFinEntrenamiento": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Nueva fecha de finalización para el entrenamiento, en formato \"YYYY-MM-DD HH:MM:SS\".",
+                    "example": "2026-01-15 18:00:00"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entrenamiento cognitivo actualizado exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Entrenamiento cognitivo actualizado exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "entrenamientoId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "Variable 'Memoria de Trabajo' y sus sesiones eliminadas."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de validación (ej. falta un parámetro, la variable a remover no existe)."
+          },
+          "401": {
+            "description": "No autorizado (token no válido)."
+          },
+          "403": {
+            "description": "Prohibido (rol no permitido)."
+          },
+          "404": {
+            "description": "Estudiante no encontrado o no tiene un entrenamiento cognitivo."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/sesiones/{idSesion}/observacion": {
+      "put": {
+        "summary": "Actualiza la observación de una sesión de entrenamiento específica.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idSesion",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "El ID de la sesión de entrenamiento."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "nuevaObservacion"
+                ],
+                "properties": {
+                  "nuevaObservacion": {
+                    "type": "string",
+                    "description": "El nuevo texto para la observación.",
+                    "example": "El estudiante mostró gran concentración durante esta sesión."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Observación actualizada exitosamente."
+          },
+          "400": {
+            "description": "Datos inválidos (ID no es UUID, observación no es string, o la sesión no se puede modificar)."
+          },
+          "401": {
+            "description": "No autorizado."
+          },
+          "403": {
+            "description": "Prohibido (rol no es Entrenador)."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/sesiones/{idSesion}/finalizar": {
+      "put": {
+        "summary": "Finaliza una sesión de entrenamiento y actualiza métricas y nivel inicial.",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idSesion",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "El ID de la sesión de entrenamiento a finalizar."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "nuevasMetricas",
+                  "nuevoNivelInicial"
+                ],
+                "properties": {
+                  "nuevasMetricas": {
+                    "type": "object",
+                    "description": "Objeto JSON con las nuevas métricas de la sesión.",
+                    "example": {
+                      "precision": 85,
+                      "tiempo_respuesta": 120,
+                      "errores": 3
+                    }
+                  },
+                  "nuevoNivelInicial": {
+                    "type": "object",
+                    "description": "Objeto JSON con el nuevo nivel inicial del estudiante.",
+                    "example": {
+                      "dificultad": "media",
+                      "nivel": 2,
+                      "puntuacion": 750
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sesión finalizada exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Sesión de entrenamiento finalizada. Métricas y nivel inicial actualizados exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "idSesion": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos inválidos o sesión no se puede finalizar."
+          },
+          "401": {
+            "description": "No autorizado."
+          },
+          "403": {
+            "description": "Prohibido (rol no es Entrenador)."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/entrenamientos-cognitivos/asignaciones/{idAsignacion}/finalizar": {
+      "put": {
+        "summary": "Finaliza una asignación de variable cognitiva cambiando su estado a \"Finalizado\".",
+        "tags": [
+          "EntrenamientoCognitivo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idAsignacion",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "El ID de la asignación de variable a finalizar."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asignación de variable finalizada exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Asignación de variable [UUID] marcada como \"Finalizado\" exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "asignacionId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "El trigger correspondiente se encargará de actualizar el estado del entrenamiento cognitivo general si todas las demás variables activas también están finalizadas."
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos inválidos o asignación no se puede finalizar (ej. no está en estado \"En Progreso\")."
+          },
+          "401": {
+            "description": "No autorizado."
+          },
+          "403": {
+            "description": "Prohibido (rol no es Entrenador)."
+          },
+          "404": {
+            "description": "Asignación de variable no encontrada."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/estudiantes": {
+      "post": {
+        "summary": "Registra un nuevo estudiante.",
+        "tags": [
+          "Estudiantes"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "siglaTipoDocumento",
+                  "nombreGenero",
+                  "nombres",
+                  "apellidos",
+                  "numeroDocumento",
+                  "fechaNacimiento",
+                  "correo",
+                  "programaNombres"
+                ],
+                "properties": {
+                  "siglaTipoDocumento": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento (ej. \"CC\", \"TI\").",
+                    "example": "CC"
+                  },
+                  "nombreGenero": {
+                    "type": "string",
+                    "description": "Nombre del género (ej. \"Masculino\", \"Femenino\", \"Otro\").",
+                    "example": "Masculino"
+                  },
+                  "nombres": {
+                    "type": "string",
+                    "description": "Nombres del estudiante.",
+                    "example": "Juan David"
+                  },
+                  "apellidos": {
+                    "type": "string",
+                    "description": "Apellidos del estudiante.",
+                    "example": "Pérez Gómez"
+                  },
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento único del estudiante.",
+                    "example": "1020304050"
+                  },
+                  "fechaNacimiento": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Fecha de nacimiento del estudiante en formato YYYY-MM-DD.",
+                    "example": "1995-08-15"
+                  },
+                  "correo": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Correo electrónico único del estudiante.",
+                    "example": "juan.perez@example.com"
+                  },
+                  "programaNombres": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista de nombres de programas académicos a los que se inscribe el estudiante.",
+                    "example": [
+                      "Ingeniería de Sistemas",
+                      "Diseño Gráfico"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Estudiante registrado exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Estudiante registrado exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "El UUID del estudiante recién creado."
+                        },
+                        "mensajeBD": {
+                          "type": "string",
+                          "description": "Mensaje devuelto por la función de la base de datos.",
+                          "example": "Estudiante registrado exitosamente."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o faltantes, o tipo de documento/género/programa no encontrado, o máximo de programas excedido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflicto, el estudiante ya existe (ej. correo o número de documento duplicado).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/estudiantes/{siglaTipoDoc}/{numeroDoc}": {
+      "get": {
+        "summary": "Obtiene la información completa de un estudiante.",
+        "tags": [
+          "Estudiantes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "siglaTipoDoc",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Sigla del tipo de documento del estudiante.",
+            "example": "CC"
+          },
+          {
+            "in": "path",
+            "name": "numeroDoc",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Número de documento del estudiante.",
+            "example": "1001004970"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estudiante encontrado exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Estudiante encontrado exitosamente."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "nombres": {
+                          "type": "string"
+                        },
+                        "apellidos": {
+                          "type": "string"
+                        },
+                        "tipo_documento_sigla": {
+                          "type": "string"
+                        },
+                        "numero_documento": {
+                          "type": "string"
+                        },
+                        "fecha_nacimiento": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "correo": {
+                          "type": "string"
+                        },
+                        "programas": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Estudiante no encontrado."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifica la información de un estudiante existente.",
+        "tags": [
+          "Estudiantes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "siglaTipoDoc",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Sigla del tipo de documento actual del estudiante.",
+            "example": "CC"
+          },
+          {
+            "in": "path",
+            "name": "numeroDoc",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Número de documento actual del estudiante.",
+            "example": "1020304050"
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto con los campos a actualizar. Solo es necesario incluir los campos que se desean cambiar.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombres": {
+                    "type": "string",
+                    "description": "Los nuevos nombres del estudiante.",
+                    "example": "Carlos Alberto"
+                  },
+                  "apellidos": {
+                    "type": "string",
+                    "description": "Los nuevos apellidos del estudiante.",
+                    "example": "Sánchez Rodríguez"
+                  },
+                  "correo": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "El nuevo correo electrónico del estudiante.",
+                    "example": "carlos.sanchez@example.com"
+                  },
+                  "fechaNacimiento": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "La nueva fecha de nacimiento en formato YYYY-MM-DD.",
+                    "example": "1998-05-20"
+                  },
+                  "genero": {
+                    "type": "string",
+                    "description": "El nuevo nombre del género (ej. \"Masculino\").",
+                    "example": "Masculino"
+                  },
+                  "programaNombres": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Reemplazo completo de la lista de programas del estudiante.",
+                    "example": [
+                      "Administración de Empresas"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Información del estudiante actualizada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Información del estudiante CC-1020304050 procesada para actualización. Datos personales actualizados."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "estudianteId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error de validación (ej. formato de correo inválido, programa no existe)."
+          },
+          "404": {
+            "description": "Estudiante no encontrado."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/api/estudiantes/{id}/genero": {
+      "patch": {
+        "summary": "Actualiza el género de un estudiante específico por su ID.",
+        "tags": [
+          "Estudiantes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "ID del estudiante (UUID)."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "nuevoNombreGenero"
+                ],
+                "properties": {
+                  "nuevoNombreGenero": {
+                    "type": "string",
+                    "example": "Femenino"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Género actualizado exitosamente."
+          },
+          "400": {
+            "description": "ID inválido o datos de entrada incorrectos."
+          },
+          "404": {
+            "description": "Estudiante o género no encontrado."
+          }
+        }
+      }
+    },
+    "/api/facultades": {
+      "get": {
+        "summary": "Obtiene la lista de todas las facultades disponibles.",
+        "tags": [
+          "Facultades"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de facultades obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Facultades obtenidas exitosamente."
+                    },
+                    "total": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "facultades": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Facultad"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/sesiones/crear": {
+      "post": {
+        "summary": "Crea una nueva sesión de entrenamiento para una variable cognitiva específica.",
+        "tags": [
+          "Sesiones"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "siglaTipoDocEstudiante": {
+                    "type": "string",
+                    "example": "CC"
+                  },
+                  "numeroDocEstudiante": {
+                    "type": "string",
+                    "example": "1036402111"
+                  },
+                  "nombreVariableCognitiva": {
+                    "type": "string",
+                    "example": "Lectura Critica"
+                  },
+                  "fechaInicio": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha y hora de inicio. Si se omite, se usa la actual.",
+                    "example": "2025-06-20T10:00:00"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sesión creada exitosamente."
+          },
+          "400": {
+            "description": "Datos de entrada inválidos."
+          },
+          "403": {
+            "description": "El usuario no tiene el rol de Entrenador."
+          },
+          "404": {
+            "description": "Estudiante o variable no encontrados."
+          }
+        }
+      }
+    },
+    "/api/sesiones/{idSesion}/iniciar": {
+      "post": {
+        "summary": "Inicia una sesión de entrenamiento que está 'Por Iniciar'.",
+        "tags": [
+          "Sesiones"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idSesion",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sesión iniciada exitosamente."
+          },
+          "400": {
+            "description": "La sesión no se puede iniciar (ej. ya está iniciada o finalizada)."
+          },
+          "404": {
+            "description": "Sesión no encontrada."
+          }
+        }
+      }
+    },
+    "/api/tipos-documento": {
+      "get": {
+        "summary": "Obtiene la lista de todos los tipos de documento disponibles.",
+        "tags": [
+          "TiposDocumento"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tipos de documento obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Tipos de documento obtenidos exitosamente."
+                    },
+                    "total": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "tiposDocumento": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TipoDocumento"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "403": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "500": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      }
+    },
+    "/api/utilidades/generos": {
+      "get": {
+        "summary": "Obtiene la lista de todos los géneros disponibles.",
+        "tags": [
+          "Utilidades"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de géneros obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de géneros obtenida exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GeneroVista"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/utilidades/tipos-documento": {
+      "get": {
+        "summary": "Obtiene la lista de todos los tipos de documento disponibles.",
+        "tags": [
+          "Utilidades"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tipos de documento obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de tipos de documento obtenida exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TipoDocumentoVista"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/utilidades/programas": {
+      "get": {
+        "summary": "Obtiene la lista de todos los programas disponibles.",
+        "tags": [
+          "Utilidades"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de programas obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de programas obtenida exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ProgramaVista"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/utilidades/tipos-variables-cognitivas": {
+      "get": {
+        "summary": "Obtiene la lista de todos los tipos de variables cognitivas disponibles.",
+        "tags": [
+          "Utilidades"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tipos de variables cognitivas obtenida exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lista de tipos de variables cognitivas obtenida exitosamente."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TipoVariableCognitivaVista"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/utilidades/estudiantes/documento/{tipoDocumento}/{numeroDocumento}": {
+      "get": {
+        "summary": "Obtiene el ID de un estudiante por su tipo y número de documento.",
+        "tags": [
+          "Utilidades"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tipoDocumento",
+            "required": true,
+            "description": "Sigla del tipo de documento del estudiante (ej. \"CC\", \"TI\").",
+            "schema": {
+              "type": "string",
+              "example": "CC"
+            }
+          },
+          {
+            "in": "path",
+            "name": "numeroDocumento",
+            "required": true,
+            "description": "Número de documento del estudiante.",
+            "schema": {
+              "type": "string",
+              "example": "1036402111"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID de estudiante obtenido exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "ID de estudiante obtenido exitosamente."
+                    },
+                    "data": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "El UUID del estudiante encontrado.",
+                      "example": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontró estudiante con el tipo y número de documento especificados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No se encontró estudiante con el tipo y número de documento especificados."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/variables-cognitivas/abandonar": {
+      "patch": {
+        "summary": "Marcar una asignación de variable cognitiva como 'Abandono' para un estudiante específico.",
+        "tags": [
+          "VariablesCognitivas"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "siglaDocumento",
+                  "numeroDocumento",
+                  "idVariableCognitiva"
+                ],
+                "properties": {
+                  "siglaDocumento": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del estudiante (ej. \"CC\")."
+                  },
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento del estudiante."
+                  },
+                  "idVariableCognitiva": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "El UUID de la variable cognitiva a abandonar."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "asignacionId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición incorrecta, datos faltantes o error de lógica de negocio (ej. estudiante no encontrado)."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/api/variables-cognitivas/reactivar": {
+      "patch": {
+        "summary": "Reactivar una asignación de variable cognitiva que estaba en estado 'Abandono'.",
+        "tags": [
+          "VariablesCognitivas"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "siglaDocumento",
+                  "numeroDocumento",
+                  "idVariableCognitiva"
+                ],
+                "properties": {
+                  "siglaDocumento": {
+                    "type": "string",
+                    "description": "Sigla del tipo de documento del estudiante (ej. \"CC\")."
+                  },
+                  "numeroDocumento": {
+                    "type": "string",
+                    "description": "Número de documento del estudiante."
+                  },
+                  "idVariableCognitiva": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "El UUID de la variable cognitiva a reactivar."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "asignacionId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "detalles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición incorrecta, datos faltantes o la variable no estaba en estado 'Abandono'."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/api/variables-cognitivas/nombre/{nombre}": {
+      "get": {
+        "summary": "Obtener el ID de una variable cognitiva por su nombre.",
+        "tags": [
+          "VariablesCognitivas"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "nombre",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "El nombre exacto de la variable cognitiva a buscar (ej. 'Control Inhibitorio')."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID de la variable encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable cognitiva no encontrada."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Admin",
+      "description": "Endpoints para la gestión de administradores (entrenadores)."
+    },
+    {
+      "name": "Autenticación",
+      "description": "Endpoints para el inicio de sesión de usuarios. Estos endpoints NO requieren autenticación previa."
+    },
+    {
+      "name": "Entrenadores",
+      "description": "Endpoints para la gestión de entrenadores y sus facultades."
+    },
+    {
+      "name": "EntrenamientoCognitivo",
+      "description": "Endpoints para la gestión de entrenamientos cognitivos y estudiantes."
+    },
+    {
+      "name": "Estudiantes",
+      "description": "Gestión de estudiantes"
+    },
+    {
+      "name": "Facultades",
+      "description": "Endpoints para la gestión de facultades."
+    },
+    {
+      "name": "Sesiones",
+      "description": "Endpoints para la gestión de sesiones de entrenamiento."
+    },
+    {
+      "name": "TiposDocumento",
+      "description": "Endpoints para la gestión de tipos de documento."
+    },
+    {
+      "name": "Utilidades",
+      "description": "Endpoints de utilidad general (listas desplegables, etc.)"
+    }
+  ]
+}
