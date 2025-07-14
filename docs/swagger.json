@@ -3,7 +3,7 @@
   "info": {
     "title": "Documentación de la API de CentralizadorBackEnd",
     "version": "1.0.0",
-    "description": "
+    "description": |
     API REST para la gestión de datos de la plataforma CogniCare, incluyendo estudiantes, entrenadores y entrenamientos cognitivos.
 
     ## 🔐 Autenticación
@@ -24,7 +24,7 @@
     ### **Entrenador**
     - Gestión de estudiantes y sus entrenamientos cognitivos.
     - Creación y seguimiento de sesiones de entrenamiento.
-    - Visualización de informes de los estudiantes asignados.",
+    - Visualización de informes de los estudiantes asignados.,
     "contact": {
       "name": "Equipo de Desarrollo",
       "email": "devteam@example.com"
