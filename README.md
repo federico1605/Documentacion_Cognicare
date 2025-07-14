@@ -20,7 +20,7 @@
 2. [Diagrama de clases](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.2.%20Diagrama%20de%20Clases.md)
 3. [Diagrama de paquetes](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.3.%20Diagrama%20de%20Paquetes.md)
 4. [Diagrama de componentes](https://github.com/federico1605/Documentacion_Cognicare/blob/a9070db68f476f31c61f061dc6df8072e3311502/Dise%C3%B1oTacticoDetallado/4.4.%20Diagrama%20de%20Componentes.md)
-5. [Contratos de API](https://github.com/federico1605/Documentacion_Cognicare/blob/4459c44db4cb48166dca67acd52318ce4cdaabf7/Dise%C3%B1oTacticoDetallado/4.5.%20Contratos%20de%20API.md)
+5. [Contratos de API](https://github.com/federico1605/Documentacion_Cognicare/blob/3bc6a93d7b7e92ace8f6cc48b6050c79b1f0f314/Dise%C3%B1oTacticoDetallado/4.5.%20Contratos%20de%20API.md)
 ## 5. Construccion
 1. Analisis estatico de codigo
 2. Pruebas unitarias
