@@ -17,7 +17,7 @@
 4. [Plataforma tecnologica](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 ## 4. Diseño tactico detallado
 1. [Diagrama de datos](https://github.com/federico1605/Documentacion_Cognicare/blob/dd09700a5f053b76fa76ecc1ea64996b67fab005/Dise%C3%B1oTacticoDetallado/4.1.%20Modelo%20de%20Datos.md)
-2. [Diagrama de clases](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.2.%20Diagrama%20de%20Clases.md)
+2. [Diagrama de clases](https://github.com/federico1605/Documentacion_Cognicare/blob/04ed9237c43912dc4c9e1161bd52d89334220253/Dise%C3%B1oTacticoDetallado/4.2.%20Diagrama%20de%20Clases.md)
 3. [Diagrama de paquetes](https://github.com/federico1605/Documentacion_Cognicare/blob/bd756fc6ea8f7b5976d494547f3580cd194ce21c/Dise%C3%B1oTacticoDetallado/4.3.%20Diagrama%20de%20Paquetes.md)
 4. [Diagrama de componentes](https://github.com/federico1605/Documentacion_Cognicare/blob/a9070db68f476f31c61f061dc6df8072e3311502/Dise%C3%B1oTacticoDetallado/4.4.%20Diagrama%20de%20Componentes.md)
 5. [Contratos de API](https://github.com/federico1605/Documentacion_Cognicare/blob/3bc6a93d7b7e92ace8f6cc48b6050c79b1f0f314/Dise%C3%B1oTacticoDetallado/4.5.%20Contratos%20de%20API.md)
