@@ -1,7 +1,7 @@
 # Documentacion Cognicare
 
 ## 1. Descubrimiento del problema
-1. [Visión](https://github.com/federico1605/Documentacion_Cognicare/blob/e60c2a59e8f9cfa6a6924d60fc9de7e2513ce6c3/DescubrimientoProblema/1.1.%20Visi%C3%B3n.md)
+1. [Visión](https://github.com/federico1605/Documentacion_Cognicare/blob/e0264313d3a2cc65596a393e85de57a8ef6870fc/DescubrimientoProblema/1.1.%20Visi%C3%B3n.md)
 
 2. [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/e60c2a59e8f9cfa6a6924d60fc9de7e2513ce6c3/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
 ## 2. Diseño estrategico
