@@ -3,7 +3,7 @@
 ## 1. Descubrimiento del problema
 1. [Visión](https://github.com/federico1605/Documentacion_Cognicare/blob/e0264313d3a2cc65596a393e85de57a8ef6870fc/DescubrimientoProblema/1.1.%20Visi%C3%B3n.md)
 
-2. [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/e60c2a59e8f9cfa6a6924d60fc9de7e2513ce6c3/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
+2. [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/4b8764ce9fdecf1a861684098be66336b1f6e92f/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
 ## 2. Diseño estrategico
 1. Modelado de dominio ([Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/7167742ae2b464e3e56c565941ef1ef2fba878c5/Dise%C3%B1oEstrategico/ModeloDominioAnemico.md) y [enriquecido](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EVnVxWpOY-BMqu7yUH9PsmIBWMf6aPuNzZR3PrfmESUp5g?e=6NB8b1))
 2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/786733cccbef566184f585ec150120d4e0f0ab45/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
