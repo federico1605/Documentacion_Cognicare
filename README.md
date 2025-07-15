@@ -27,5 +27,5 @@
 ## 6. Entregas y despliegue
 1. Estrategia de entrega
 2. Check list de Release
-3. Manual de usuario
+3. [Manual de usuario](https://github.com/federico1605/Documentacion_Cognicare/blob/018d6ea267f42f53e1edfbc75088de767169e7cb/EntregasDespliegue/6.3.%20Manual%20de%20Usuario.md)
 4. Manual de instalación
