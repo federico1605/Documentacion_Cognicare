@@ -6,7 +6,7 @@
 2. [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/4b8764ce9fdecf1a861684098be66336b1f6e92f/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
 ## 2. Diseño estrategico
 1. Modelado de dominio ([Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/8e46b360a1cd84ccdb20824e5069ac77ad6a9591/Dise%C3%B1oEstrategico/2.1.1.%20ModeloDominioAnemico.md) y [enriquecido](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EVnVxWpOY-BMqu7yUH9PsmIBWMf6aPuNzZR3PrfmESUp5g?e=6NB8b1))
-2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/786733cccbef566184f585ec150120d4e0f0ab45/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
+2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/0769c82fabd6eda22fdc862446ea752a51ac46f4/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
 3. [Mapa de historias de usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
 4. [Historias de Usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
 5. [Criterios de aceptación](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
