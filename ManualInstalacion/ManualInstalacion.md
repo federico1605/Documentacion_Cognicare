@@ -107,11 +107,17 @@ Git es una herramienta que permite gestionar el código fuente de un proyecto, f
 
 **Errores comunes y soluciones:**
 - **Error "git no se reconoce como un comando interno"**: Reinicia la terminal después de la instalación. Si persiste, verifica que la ruta de instalación de Git se haya añadido correctamente a la variable PATH, verifica las variables de entorno.
+
 ![VariableInicio](https://hackmd.io/_uploads/r1L-0PVLex.png)
+
 - Para verificar si se agrego las variables que requiere git para trabajar en Windows se debe buscar en variables del sistema la variable que se llama Path y darle Editar
+
 ![VariableInfo](https://hackmd.io/_uploads/rJ7NRDEUlg.png)
+
 - Donde debes de buscar una ruta parecida a esta:
+
 ![VariablesFinal](https://hackmd.io/_uploads/HJcYADNIge.png)
+
 Si no aparece una ruta así, incluso después de verificar que Git se instaló correctamente, no es suficiente con reinstalarlo nuevamente.
 
 Si tras la reinstalación Git aún no aparece en el PATH, es posible que los cambios no se estén aplicando correctamente. En ese caso, asegúrate de:
@@ -161,12 +167,18 @@ Para instalarlo lo unico que debes hacer es darle en el boton de **Next** que te
 - **"node no se reconoce como un comando interno"**: Verifica que NVM_SYMLINK y PATH estén correctamente configurados, y reinicia la terminal donde ejecuto la verificación de la versión de Node, si todavía no reconoce el comando verifique que si se agregaran Node en las variables de entorno, puede revisar los pasos que se mostraban en la instalación de Node en Windows, sino encuentra la propiedad de Node debe agregarla manualmente o reintentar la instalación.
 Pasos para agregarla manualmente:
 1. Debe buscar el programa de variables de entorno de Windows, cuando lo encuentre se le abrira una vista como esta:
+
 ![VariablesEntorno](https://hackmd.io/_uploads/BJiK3_ELee.png)
+
 Donde debe darle donde señala la flechala cual le abrirá:
+
 ![InfoVariables](https://hackmd.io/_uploads/BkS3nuE8xg.png)
+
 2. Donde la opción que se ve subrayada en azul es lo que le debe aparecer, en caso de que no sea así, debe crearla, le debe dar en **Nuevo...**
 3. La cual le abrira esta vista donde debe llenar los datos con la información que se le muestra en la siguiente imagen
+
 ![CrearVariable](https://hackmd.io/_uploads/S1G_6uEUex.png)
+
 Ya despues de agregar los datos solo debe darle en aceptar y abrir de nuevo una nueva terminal y volver ejecutar el comando de **node -v**.
 
 ### 3.4 Instalación de Docker
@@ -180,9 +192,11 @@ Vease la documentación oficial de Docker: https://docs.docker.com/engine/instal
 
 **Para Windows debe instalar Docker Desktop**
 En el link anterior puedes encontrar el apartado donde te llevará a descargar Docker Desktop, donde debes seguir los pasos de instalación según tu arquitectura del procesador y el sistema operativo.
+
 ![InstalarDocker](https://hackmd.io/_uploads/H1tVk5KWgx.png)
 
 Debes de buscar esta opción para descargar Docker Desktop, si tu sistema operativo es Windows le das a esa opción si es Mac le das a esa opción.
+
 ![Windows Docker](https://hackmd.io/_uploads/ryUq19FZxg.png)
 
 Donde debe señalar la arquitectura de su computador para descargar el ejecutable de la intalacion, una vez descargado solo siga los pasos y no es necesario cambiar nada de las configuraciones de descarga
@@ -221,9 +235,13 @@ Docker Compose es una herramienta para definir y ejecutar aplicaciones multi-con
 
     Busca en el equipo 'Editar las variables de entorno del sistema'.
     En la sección 'Variables del sistema', busque y seleccione la variable 'Path' y luego haga clic en 'Editar'.
+
     ![Variables](https://hackmd.io/_uploads/ByyIaM0-el.png)
+
     Haga clic en 'Nuevo' y agregue la ruta al directorio donde se encuentra docker-compose.exe.
+
     ![VariablesDocker](https://hackmd.io/_uploads/H1Rspz0-eg.png)
+
     Aplique los cambios y reinicie el CMD o PowerShell para verificar la instalación.
 
 - **Repository does not exist or may require 'docker login'**: Este error ocurre cuando Docker intenta descargar una imagen desde un repositorio privado y no tiene credenciales válidas. El daemon de Docker rechaza la solicitud porque es necesario iniciar sesión para obtener acceso a la imagen.
@@ -314,16 +332,60 @@ Docker Compose permite levantar todos los servicios necesarios para la aplicaci�
 cd deployment
 ```
 2. Inicia todos los servicios en modo background:
+   - Ve a la carpeta donde copiaste la base de datos
+   - Dentro donde encuentres los script de la base de datos crea un archivo `docker-compose.yml`
+   - Puedes copiar y pegar esta configuración de ejemplo con las credenciales de la base de datos y al configuración para el docker:
+```yml
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_test
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: CC
+    ports:
+      - "5432:5432"
+    volumes:
+      # Mapear todos los scripts SQL de la carpeta init_scripts al directorio de inicialización de PostgreSQL
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/data
+    networks:
+      - postgres_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_test
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge
+
+```
+En esta configuración debes poner los scripts de la base de datos en un archivo `init.sql` en la misma carpeta donde tengas el archivo `docker-compose.yml`
+
+Guarda el archivo y ejecuta el comando en la consola
    ```bash
    docker-compose up -d
    ```
    Este comando crea y arranca todos los contenedores definidos en `docker-compose.yml`.
 
-3. Para verificar que todos los servicios se han iniciado correctamente:
+4. Para verificar que todos los servicios se han iniciado correctamente:
    ```bash
    docker-compose ps
    ```
    Deberías ver todos los servicios con estado "Up" o similar.
+
+5. Para acceder a la base de datos puedes usar el PGAdmin, también configurado en el `docker-compose-yml`.
    
 **Límites de uso o condiciones:**
 - Requiere al menos 8GB de RAM asignados a Docker para un funcionamiento óptimo
@@ -342,9 +404,10 @@ Para verificar qué procesos están usando un puerto:
     lsof -i :<puerto>
     ```
     o bien puedes usar la herramienta de docker compose para verificar los puertos de los servicios.
+
 ![DockerContenedor](https://hackmd.io/_uploads/BkIHoYVUle.png)
 
-    Si detectas un conflicto, modifica el archivo docker-compose.yml para cambiar los puertos o detén que los este ocupando.
+    Si detectas un conflicto, modifica el archivo docker-compose.yml para cambiar los puertos o detén lo que los este ocupando.
 
 - **Problemas de memoria**: Docker requiere recursos adecuados (RAM y CPU) para ejecutar contenedores correctamente, especialmente cuando se levantan varios servicios simultáneamente. Si no se asigna suficiente memoria o CPU, algunos contenedores pueden fallar o quedar en estado pausado.
 
@@ -472,7 +535,9 @@ Swagger UI proporciona una interfaz interactiva para explorar y probar los endpo
 **Características principales de la documentación:**
 - Descripción detallada de cada endpoint
 - Parámetros de entrada requeridos y opcionales
+
 ![Swagger](https://hackmd.io/_uploads/rklfD9tNUll.png)
+
 - Formato de respuesta esperado y códigos de estado HTTP
 - Modelos de datos utilizados en la API
 
@@ -485,7 +550,7 @@ Swagger UI proporciona una interfaz interactiva para explorar y probar los endpo
     **Solución:**
     Esto lo logras verificando que desplegaste la aplicación, esto lo miras ejecutando los pasos del punto 6.3. Del documento, donde podrás ver los pasos para desplegar la aplicación.
 
-## 7. Configuración del proyecto Java en Visual Studio Code
+## 7. Configuración del proyecto en Visual Studio Code
 
 ### 7.1 Instalación de IDE (Visual Studio Code)
 
@@ -503,7 +568,9 @@ Visual Studio Code (VS Code) es un editor de código ligero y multiplataforma qu
 Puedes abrir los dos proyectos del backend y el frontend con el mismo programa en dos ventanas diferentes. 
 
 - Cuando se instalan las dependencias en el proyecto, te mostrará esta vista:
+
 ![Visual](https://hackmd.io/_uploads/SkbKVqAWxg.png)
+
 - Donde puedes darle a la opción de `Open Folder...`. Cuando le das a esta opción, se te abrirá un explorador de archivos donde debes buscar la ruta donde clonaste el proyecto de Componente Centralizador, lo abres y se te comenzarán a cargar todas las dependencias y carpetas que posee.
 
 Donde se te abrira algo parecido a esto:
