@@ -8,7 +8,7 @@ Este manual te guiará paso a paso en la configuración e instalación completa 
 
 El proyecto implementa un patrón arquitectónico de capas, con las cuales se les da responsabilidades a cada capa para generar la administración crentralizada de todos los componentes de Cognicare.
 
-![Arquetipo_Referencia](https://hackmd.io/_uploads/SJ-04v48xx.png)
+![Arquetipo_Referencia](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Arquetipo_Referencia.png)
 
 ### 2.1 Componentes
 
@@ -58,17 +58,17 @@ Antes de instalar cualquier herramienta, es importante identificar la arquitectu
 **Para Windows:**
 1. Para verificar si tu sistema es de 32 o 64 bits:
    - Método 1: En el explorador de archivo de Windows haz clic derecho en "Este equipo" o "Mi PC" → Propiedades
-   ![Explorador_Archivos](https://hackmd.io/_uploads/H1Si4KtWeg.png)
-   ![Propiedades_Explorador](https://hackmd.io/_uploads/HJADOPEUxe.png)
-   ![Final_Meto1](https://hackmd.io/_uploads/SkdsuvVUel.png)
+   ![Explorador_Archivos](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Explorador_Archivos.png)
+   ![Propiedades_Explorador](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Propiedades_Explorador.png)
+   ![Final_Meto1](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Final_Meto1.png)
    - En el apartado de "Tipo de sistema" te dira si tu procesador es de 64 bits o 32 bits
 
    - Método 2: Abre la configuración de Windows → Sistema → Acerca de o Información
-   ![Meto2Confi](https://hackmd.io/_uploads/r1PlKDELlg.png)
-   ![Meto2Final](https://hackmd.io/_uploads/HyKUKw4Uex.png)
+   ![Meto2Confi](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Meto2Confi.png)
+   ![Meto2Final](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Meto2Final.png)
    - Método 3: Presiona Win+R se abrira un cuadro donde se puede ingresar texto, escribe "msinfo32" y presiona Ente, donde en la variable de Tipo de sistema le dira sobre que arquitectura esta construido su procesador.
-   ![Meto3_Conso](https://hackmd.io/_uploads/S15YKPEUlx.png)
-   ![Meto3Final](https://hackmd.io/_uploads/ByQnYvE8xl.png)
+   ![Meto3_Conso](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Meto3_Conso.png)
+   ![Meto3Final](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Meto3Final.png)
    
 2. En la información del sistema, busca "Tipo de sistema":
    - "Sistema operativo de 64 bits, procesador basado en x64": Debes usar versiones x64/AMD64
@@ -108,15 +108,15 @@ Git es una herramienta que permite gestionar el código fuente de un proyecto, f
 **Errores comunes y soluciones:**
 - **Error "git no se reconoce como un comando interno"**: Reinicia la terminal después de la instalación. Si persiste, verifica que la ruta de instalación de Git se haya añadido correctamente a la variable PATH, verifica las variables de entorno.
 
-![VariableInicio](https://hackmd.io/_uploads/r1L-0PVLex.png)
+![VariableInicio](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VariableInicio.png)
 
 - Para verificar si se agrego las variables que requiere git para trabajar en Windows se debe buscar en variables del sistema la variable que se llama Path y darle Editar
 
-![VariableInfo](https://hackmd.io/_uploads/rJ7NRDEUlg.png)
+![VariableInfo](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VariableInfo.png)
 
 - Donde debes de buscar una ruta parecida a esta:
 
-![VariablesFinal](https://hackmd.io/_uploads/HJcYADNIge.png)
+![VariablesFinal](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VariablesFinal.png)
 
 Si no aparece una ruta así, incluso después de verificar que Git se instaló correctamente, no es suficiente con reinstalarlo nuevamente.
 
@@ -147,13 +147,13 @@ Node.js es como una herramienta que permite que el lenguaje de programación Jav
 2. Donde vas a ver una pagina como esta:
 
 En la cual debes señalar la versión del Node que deseas instalar, la recomendada es la 20.19.4.
-![InstaladorNode](https://hackmd.io/_uploads/H10lg_EIgg.png)
+![InstaladorNode](/Documentacion_Cognicare/Imagenes/ManualInstalacion/InstaladorNode.png)
 
 De igual forma revisa la arquitectura del computador para tu sistema operativo, en la parte inferior lo puedes cambiar.
 ![image](https://hackmd.io/_uploads/SJEDxdN8ex.png)
 
 3. El archivo que te instala en el explorador de archivos debes abrirlo y te mostrara esta vista:
-![NodeInicio](https://hackmd.io/_uploads/B1Lal_NUlg.png)
+![NodeInicio](/Documentacion_Cognicare/Imagenes/ManualInstalacion/NodeInicio.png)
 
 Para instalarlo lo unico que debes hacer es darle en el boton de **Next** que te muestra la vista y no debes de cambiar nada en la instalación solo aceptar los terminos y condiciones y continuar con la instalación que te deja sin cambiar ninguna propiedad.
 
@@ -168,16 +168,16 @@ Para instalarlo lo unico que debes hacer es darle en el boton de **Next** que te
 Pasos para agregarla manualmente:
 1. Debe buscar el programa de variables de entorno de Windows, cuando lo encuentre se le abrira una vista como esta:
 
-![VariablesEntorno](https://hackmd.io/_uploads/BJiK3_ELee.png)
+![VariablesEntorno](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VariablesEntorno.png)
 
 Donde debe darle donde señala la flechala cual le abrirá:
 
-![InfoVariables](https://hackmd.io/_uploads/BkS3nuE8xg.png)
+![InfoVariables](/Documentacion_Cognicare/Imagenes/ManualInstalacion/InfoVariables.png)
 
 2. Donde la opción que se ve subrayada en azul es lo que le debe aparecer, en caso de que no sea así, debe crearla, le debe dar en **Nuevo...**
 3. La cual le abrira esta vista donde debe llenar los datos con la información que se le muestra en la siguiente imagen
 
-![CrearVariable](https://hackmd.io/_uploads/S1G_6uEUex.png)
+![CrearVariable](/Documentacion_Cognicare/Imagenes/ManualInstalacion/CrearVariable.png)
 
 Ya despues de agregar los datos solo debe darle en aceptar y abrir de nuevo una nueva terminal y volver ejecutar el comando de **node -v**.
 
@@ -193,11 +193,11 @@ Vease la documentación oficial de Docker: https://docs.docker.com/engine/instal
 **Para Windows debe instalar Docker Desktop**
 En el link anterior puedes encontrar el apartado donde te llevará a descargar Docker Desktop, donde debes seguir los pasos de instalación según tu arquitectura del procesador y el sistema operativo.
 
-![InstalarDocker](https://hackmd.io/_uploads/H1tVk5KWgx.png)
+![InstalarDocker](/Documentacion_Cognicare/Imagenes/ManualInstalacion/InstalarDocker.png)
 
 Debes de buscar esta opción para descargar Docker Desktop, si tu sistema operativo es Windows le das a esa opción si es Mac le das a esa opción.
 
-![Windows Docker](https://hackmd.io/_uploads/ryUq19FZxg.png)
+![Windows Docker](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Windows%20Docker.png)
 
 Donde debe señalar la arquitectura de su computador para descargar el ejecutable de la intalacion, una vez descargado solo siga los pasos y no es necesario cambiar nada de las configuraciones de descarga
 
@@ -236,11 +236,11 @@ Docker Compose es una herramienta para definir y ejecutar aplicaciones multi-con
     Busca en el equipo 'Editar las variables de entorno del sistema'.
     En la sección 'Variables del sistema', busque y seleccione la variable 'Path' y luego haga clic en 'Editar'.
 
-    ![Variables](https://hackmd.io/_uploads/ByyIaM0-el.png)
+    ![Variables](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Variables.png)
 
     Haga clic en 'Nuevo' y agregue la ruta al directorio donde se encuentra docker-compose.exe.
 
-    ![VariablesDocker](https://hackmd.io/_uploads/H1Rspz0-eg.png)
+    ![VariablesDocker](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VariablesDocker.png)
 
     Aplique los cambios y reinicie el CMD o PowerShell para verificar la instalación.
 
@@ -387,13 +387,32 @@ Guarda el archivo y ejecuta el comando en la consola
 
 5. Para acceder a la base de datos puedes usar el PGAdmin, también configurado en el `docker-compose-yml`.
 Despues de verificar que se ejecuto sin problemas la base de datos y el pgadmin puede ingresar a cualquier navegador web e ingresar la ruta que generaste por defecto del pgadmin y en nustro caso sería la ruta de **http://localhost:5050/browser/** donde se te mostrara una vista como esta:
-<img width="1911" height="931" alt="image" src="https://github.com/user-attachments/assets/e6597bdf-6d30-4191-a1a2-d7dbd54342de" />
+![PGAdminHome](/Documentacion_Cognicare/Imagenes/ManualInstalacion/PGAdminHome.png)
 
 Donde debes ingresar la contraseña que definiste para pgadmin y el usuario, en caso de dejarlo por defecto sería los siguientes: **admin@admin.com** y la contraseña **admin**.
 
 Despues de ingresar veras algo como esto:
-![IngresarPGAdmin]()
+![IngresarPGAdmin](/Documentacion_Cognicare/Imagenes/ManualInstalacion/IngresarPGAdmin.png)
 
+Donde debes registrar el servidor de Postgresql, debes de darle clic derecho en server y darle en registrar -> server lo cual abre esta imagen:
+
+![RegistrarNombreServer](/Documentacion_Cognicare/Imagenes/ManualInstalacion/RegistrarNombreServer.png)
+
+En esta imagen solo debes registrar el campo de **Name**, puedes poner el nombre de tu preferencia es como la debes reconocer, debemos irnos a la siguiente pestaña de **Connection**, donde veras algo como esto:
+
+![RegistrarBD](/Documentacion_Cognicare/Imagenes/ManualInstalacion/RegistrarBD.png)
+
+Este campo es el más importante, donde debes registrar los campos de:
+- Host: Si es servidor en local es localhost o postgres.
+- Maintenance database: la que decidiste en tu archivo docker-compose
+- username: la que decidiste en tu archivo docker-compose
+- password: la que decidiste en tu archivo docker-compose
+
+Y das en **Save** y se debe cargar tu base de datos.
+Lo cual veras esto:
+![DBConectada](/Documentacion_Cognicare/Imagenes/ManualInstalacion/DBConectada.png)
+
+Esta es toda la información que cargaste en el script de la base de datos.
    
 **Límites de uso o condiciones:**
 - Requiere al menos 8GB de RAM asignados a Docker para un funcionamiento óptimo
@@ -406,14 +425,14 @@ Despues de ingresar veras algo como esto:
 Docker Compose asigna puertos a cada servicio según la configuración del archivo docker-compose.yml. Si otro proceso en tu sistema ya está usando alguno de esos puertos, el contenedor no podrá iniciarse correctamente.
 Para verificar qué procesos están usando un puerto:
 
-    **En Windows y macOS puedes usar:**
+**En Windows puedes usar:**
 
     ```bash
     lsof -i :<puerto>
     ```
     o bien puedes usar la herramienta de docker compose para verificar los puertos de los servicios.
 
-![DockerContenedor](https://hackmd.io/_uploads/BkIHoYVUle.png)
+![DockerContenedor](/Documentacion_Cognicare/Imagenes/ManualInstalacion/DockerContenedor.png)
 
     Si detectas un conflicto, modifica el archivo docker-compose.yml para cambiar los puertos o detén lo que los este ocupando.
 
@@ -544,7 +563,7 @@ Swagger UI proporciona una interfaz interactiva para explorar y probar los endpo
 - Descripción detallada de cada endpoint
 - Parámetros de entrada requeridos y opcionales
 
-![Swagger](https://hackmd.io/_uploads/rklfD9tNUll.png)
+![Swagger](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Swagger.png)
 
 - Formato de respuesta esperado y códigos de estado HTTP
 - Modelos de datos utilizados en la API
@@ -570,19 +589,19 @@ Visual Studio Code (VS Code) es un editor de código ligero y multiplataforma qu
 
 2. Selecciona según tu sistema operativo 
 
-![VisualDescargar](https://hackmd.io/_uploads/ryVH3ERblg.png)
+![VisualDescargar](/Documentacion_Cognicare/Imagenes/ManualInstalacion/VisualDescargar.png)
 
 3. Abrir el proyecto en el IDE de visual studio code
 Puedes abrir los dos proyectos del backend y el frontend con el mismo programa en dos ventanas diferentes. 
 
 - Cuando se instalan las dependencias en el proyecto, te mostrará esta vista:
 
-![Visual](https://hackmd.io/_uploads/SkbKVqAWxg.png)
+![Visual](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Visual.png)
 
 - Donde puedes darle a la opción de `Open Folder...`. Cuando le das a esta opción, se te abrirá un explorador de archivos donde debes buscar la ruta donde clonaste el proyecto de Componente Centralizador, lo abres y se te comenzarán a cargar todas las dependencias y carpetas que posee.
 
 Donde se te abrira algo parecido a esto:
-![Proyecto](https://hackmd.io/_uploads/B1gfOtN8lx.png)
+![Proyecto](/Documentacion_Cognicare/Imagenes/ManualInstalacion/Proyecto.png)
 
 - Visual Studio IntelliCode (autocompletado asistido por IA)
    - Ver modelos de datos utilizados por la API
