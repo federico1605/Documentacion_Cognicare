@@ -341,9 +341,9 @@ services:
     image: postgres:latest
     container_name: postgres_test
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: CC
+      POSTGRES_USER: TU_USUARIO
+      POSTGRES_PASSWORD: TU_CONTRASEÑA
+      POSTGRES_DB: TU_BASE_DATOS
     ports:
       - "5432:5432"
     volumes:
@@ -357,8 +357,8 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin_test
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: TU_CORREO
+      PGADMIN_DEFAULT_PASSWORD: TU_CONSTRASEÑA
     ports:
       - "5050:80"
     depends_on:
@@ -371,7 +371,7 @@ networks:
     driver: bridge
 
 ```
-En esta configuración debes poner los scripts de la base de datos en un archivo `init.sql` en la misma carpeta donde tengas el archivo `docker-compose.yml`
+En esta configuración debes poner los scripts de la base de datos en un archivo `init.sql` en la misma carpeta donde tengas el archivo `docker-compose.yml`, en este archivo es donde se genera la configuración de la base de datos y tambié en los scripts que subas estara la estrutura que tendra.
 
 Guarda el archivo y ejecuta el comando en la consola
    ```bash
@@ -386,6 +386,14 @@ Guarda el archivo y ejecuta el comando en la consola
    Deberías ver todos los servicios con estado "Up" o similar.
 
 5. Para acceder a la base de datos puedes usar el PGAdmin, también configurado en el `docker-compose-yml`.
+Despues de verificar que se ejecuto sin problemas la base de datos y el pgadmin puede ingresar a cualquier navegador web e ingresar la ruta que generaste por defecto del pgadmin y en nustro caso sería la ruta de **http://localhost:5050/browser/** donde se te mostrara una vista como esta:
+<img width="1911" height="931" alt="image" src="https://github.com/user-attachments/assets/e6597bdf-6d30-4191-a1a2-d7dbd54342de" />
+
+Donde debes ingresar la contraseña que definiste para pgadmin y el usuario, en caso de dejarlo por defecto sería los siguientes: **admin@admin.com** y la contraseña **admin**.
+
+Despues de ingresar veras algo como esto:
+![IngresarPGAdmin]()
+
    
 **Límites de uso o condiciones:**
 - Requiere al menos 8GB de RAM asignados a Docker para un funcionamiento óptimo
