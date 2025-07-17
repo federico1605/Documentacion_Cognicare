@@ -22,7 +22,7 @@
 4. [Diagrama de componentes](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoDetallado/4.4.%20Diagrama%20de%20Componentes.md)
 5. [Contratos de API](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoDetallado/4.5.%20Contratos%20de%20API.md)
 ## 5. Construccion
-1. [Analisis estatico de codigo](https://sonarcloud.io/summary/new_code?id=federico1605_CentralizadorBackEnd&branch=main)
+1. [Analisis estatico de codigo](https://sonarcloud.io/component_measures?id=juanrv_CentralizadorBackend)
 2. Pruebas unitarias
 ## 6. Entregas y despliegue
 1. Estrategia de entrega
