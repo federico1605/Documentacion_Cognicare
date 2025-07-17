@@ -23,7 +23,7 @@
 5. [Contratos de API](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoDetallado/4.5.%20Contratos%20de%20API.md)
 ## 5. Construccion
 1. [Analisis estatico de codigo](https://sonarcloud.io/component_measures?id=juanrv_CentralizadorBackend)
-2. Pruebas unitarias
+2. [Pruebas unitarias](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Construccion/5.2.%20Pruebas%20Unitarias.md)
 ## 6. Entregas y despliegue
 1. Estrategia de entrega
 2. Check list de Release
