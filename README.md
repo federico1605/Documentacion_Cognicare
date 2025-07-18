@@ -25,7 +25,7 @@
 1. [Analisis estatico de codigo](https://sonarcloud.io/component_measures?id=juanrv_CentralizadorBackend)
 2. [Pruebas unitarias](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Construccion/5.2.%20Pruebas%20Unitarias.md)
 ## 6. Entregas y despliegue
-1. Estrategia de entrega
+1. [Estrategia de entrega](https://uconet.sharepoint.com/:x:/r/sites/Cognicare-Core/Shared%20Documents/Core/Documentaci%C3%B3n/1.%20Artefactos%20t%C3%A9cnicos/1.%20Artefactos%20estrat%C3%A9gicos/6.%20Plan%20de%20liberaciones/Releases.xlsx?d=w7f7c9bebe91d429097da5f6d6b9cda10&csf=1&web=1&e=6GmhhU)
 2. Check list de Release
 3. [Manual de usuario](https://github.com/federico1605/Documentacion_Cognicare/blob/main/EntregasDespliegue/6.3.%20Manual%20de%20Usuario.md)
 4. [Manual de instalación](https://github.com/federico1605/Documentacion_Cognicare/blob/main/ManualInstalacion/ManualInstalacion.md)
