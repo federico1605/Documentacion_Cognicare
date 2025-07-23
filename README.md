@@ -1,4 +1,4 @@
-# Documentacion Cognicare
+# Documentación Cognicare
 
 ## 1. Descubrimiento del problema
 1. [Visión](https://github.com/federico1605/Documentacion_Cognicare/blob/main/DescubrimientoProblema/1.1.%20Visi%C3%B3n.md)
