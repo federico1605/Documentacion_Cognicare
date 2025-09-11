@@ -27,7 +27,7 @@
 1. [Analisis estatico de codigo](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Analisis/Calidad%20de%20C%C3%B3digo%20y%20Pruebas%20del%20Proyecto.md)
 2. [Pruebas unitarias](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Construccion/5.2.%20Pruebas%20Unitarias.md)
 ## 6. Entregas y despliegue
-1. [Estrategia de entrega (Excel - Hoja 3)](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/Releases.xlsx)
+1. [Estrategia de entrega (Excel - Hoja 2)](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/Releases.xlsx)
 2. [Checklist de Release](https://github.com/federico1605/Documentacion_Cognicare/blob/main/EntregasDespliegue/6.2.%20Checklist%20de%20Release.md)
 3. [Manual de usuario](https://github.com/federico1605/Documentacion_Cognicare/blob/main/EntregasDespliegue/6.3.%20Manual%20de%20Usuario.md)
 4. [Manual de instalación](https://github.com/federico1605/Documentacion_Cognicare/blob/main/ManualInstalacion/ManualInstalacion.md)
