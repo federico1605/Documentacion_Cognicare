@@ -9,9 +9,9 @@
    * [Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oEstrategico/2.1.1.%20ModeloDominioAnemico.md) 
    * [Enriquecido Excel](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/Modelo%20enriquecido.xlsx)
 2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
-3. [Mapa de historias de usuario (Excel)](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/MapeoImpactosComandos.xlsx)
-4. [Historias de Usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
-5. [Criterios de aceptación](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
+3. [Mapa de historias de usuario (Excel)](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/Releases.xlsx)
+4. [Historias de Usuario Excel](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/MapeoImpactosComandos.xlsx)
+5. [Criterios de aceptación](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/MapeoImpactosComandos.xlsx)
 ## 3. Diseño tactico alto nivel
 1. [Arquitectura de referencia](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
 2. [Drivers Arquitectonicos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oTacticoAltoNivel/ArquitecturaReferencia.md)
