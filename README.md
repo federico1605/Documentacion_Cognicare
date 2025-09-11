@@ -5,9 +5,11 @@
 
 2. [Mapa de impacto](https://github.com/federico1605/Documentacion_Cognicare/blob/main/DescubrimientoProblema/1.2.%20Mapa%20de%20Impacto.md)
 ## 2. Diseño estrategico
-1. Modelado de dominio ([Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oEstrategico/2.1.1.%20ModeloDominioAnemico.md) y [enriquecido](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EVnVxWpOY-BMqu7yUH9PsmIBWMf6aPuNzZR3PrfmESUp5g?e=6NB8b1))
+1. Modelado de dominio 
+   * [Modelo anemico](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oEstrategico/2.1.1.%20ModeloDominioAnemico.md) 
+   * [Enriquecido Excel](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/Modelo%20enriquecido.xlsx)
 2. [Requerimientos](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Dise%C3%B1oEstrategico/2.2.%20Requerimientos.md)
-3. [Mapa de historias de usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
+3. [Mapa de historias de usuario (Excel)](https://github.com/federico1605/Documentacion_Cognicare/blob/main/Archivos/Plantillas/MapeoImpactosComandos.xlsx)
 4. [Historias de Usuario](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
 5. [Criterios de aceptación](https://uconet.sharepoint.com/:x:/s/Cognicare-Core/EcFoaJY1301Ijm9oTyGmJx4B2MMwidAx8O-ONuGPoQVJjw?e=brJVR0)
 ## 3. Diseño tactico alto nivel
